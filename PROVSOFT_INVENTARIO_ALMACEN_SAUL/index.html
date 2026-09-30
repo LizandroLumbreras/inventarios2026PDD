@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inventario Almacén Saul</title><link rel="stylesheet" href="assets/styles.css">
+</head>
+<body><main class="wrap">
+<div class="top"><div><h1>Inventario Almacén Saul</h1><div class="muted">Inventario: inv29092026 · Almacén Saul · Lectura de todos los USUARIOS</div></div><div class="muted">Firestore · INVENTARIOPV</div></div>
+<section class="card">
+<div class="toolbar"><input id="buscar" placeholder="Buscar por código o concepto…"><button id="recargar" class="secondary">Recargar</button><button id="exportar" class="primary">Exportar CSV</button></div>
+<div id="estado" class="status">Cargando partidas…</div>
+<div class="tablebox"><table><thead><tr><th>Código</th><th>Concepto</th><th class="num">Cantidad</th><th class="num">Costo</th><th class="num">IVA $</th><th class="num">IEPS $</th><th class="num">Total sin impuestos</th><th class="num">Total con impuestos</th><th class="num">Aplica IVA</th><th class="num">Aplica IEPS</th></tr></thead><tbody id="filas"></tbody></table></div>
+<div class="totals"><span id="productos">0 partidas</span><span id="granSubtotal">Sin impuestos: $0.00</span><span id="granTotal">Con impuestos: $0.00</span></div>
+</section>
+<section class="card problemas"><div class="problem-head"><div><h2>Artículos con problemas de catálogo</h2><div class="muted">Productos no encontrados o encontrados sin costo. Úsalos para corregir el catálogo.</div></div><span id="problemasCount" class="badge">0</span></div><div class="tablebox"><table><thead><tr><th>Código inventario</th><th>Concepto inventario</th><th class="num">Cantidad</th><th>Problema</th></tr></thead><tbody id="filasProblemas"></tbody></table></div><div id="sinProblemas" class="empty">Sin problemas de catálogo.</div></section>
+</main><script type="module" src="assets/app.js"></script></body></html>
