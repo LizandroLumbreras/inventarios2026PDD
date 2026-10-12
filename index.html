@@ -1,156 +1,380 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventarios 2026 PDD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventarios 2026 PDD</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+:root {
+    --azul: #102849;
+    --texto: #101d35;
+    --fondo: #f3f7fc;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            color: #222;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background: #1f2937;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
+/* ENCABEZADO */
+header {
+    min-height: 125px;
+    padding: 22px 20px;
+    background: linear-gradient(115deg, #24496f, #10213e);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    text-align: left;
+    border-radius: 0 0 14px 14px;
+}
 
-        header p {
-            margin: 8px 0 0;
-            color: #d1d5db;
-        }
+.logo-principal {
+    font-size: 65px;
+    line-height: 1;
+}
 
-        .contenedor {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+.titulo-principal h1 {
+    margin: 0;
+    font-size: clamp(27px, 4vw, 46px);
+    font-weight: 900;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 18px;
-        }
+.titulo-principal h1 span {
+    color: #19b7ff;
+}
 
-        .boton {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #1f2937;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
-            border: 1px solid #e5e7eb;
-            transition: 0.2s;
-        }
+.titulo-principal p {
+    margin: 8px 0 0;
+    color: #8bdcff;
+    letter-spacing: 4px;
+    font-size: clamp(10px, 1.5vw, 16px);
+    font-weight: bold;
+}
 
-        .boton:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 18px rgba(0,0,0,0.16);
-            background: #f9fafb;
-        }
+/* CONTENEDOR */
+.contenedor {
+    width: min(1450px, 96%);
+    margin: 30px auto;
+    padding: 0 10px;
+}
 
-        .icono {
-            font-size: 30px;
-            margin-right: 12px;
-        }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #6b7280;
-            font-size: 14px;
-        }
-    </style>
+/* TARJETAS */
+.boton {
+    --color: #1687e8;
+    --claro: #e5f3ff;
+
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+    min-height: 140px;
+    overflow: hidden;
+    position: relative;
+
+    background: white;
+    color: var(--texto);
+    text-decoration: none;
+    border: 1px solid var(--color);
+    border-radius: 17px;
+    box-shadow: 0 7px 17px rgba(24,47,78,.10);
+
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.boton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 25px rgba(24,47,78,.18);
+}
+
+.boton:focus-visible {
+    outline: 3px solid var(--color);
+    outline-offset: 3px;
+}
+
+/* LOGOTIPOS */
+.icono {
+    width: 32%;
+    min-width: 90px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(42px, 5vw, 65px);
+    background: var(--color);
+    border-radius: 15px 35px 65px 15px;
+}
+
+.icono span {
+    display: inline-block;
+    filter: drop-shadow(0 3px 2px rgba(0,0,0,.15));
+    transition: transform .22s ease;
+}
+
+.boton:hover .icono span {
+    transform: scale(1.12) rotate(-3deg);
+}
+
+/* NOMBRE */
+.contenido {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    padding: 14px 10px 14px 16px;
+}
+
+.nombre {
+    width: 100%;
+    padding-left: 15px;
+    border-left: 2px solid var(--claro);
+    font-size: clamp(14px, 1.5vw, 21px);
+    line-height: 1.22;
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.flecha {
+    align-self: center;
+    flex-shrink: 0;
+    margin: 0 12px 0 0;
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--claro);
+    color: var(--color);
+    border-radius: 50%;
+    font-size: 29px;
+    transition: transform .2s ease;
+}
+
+.boton:hover .flecha {
+    transform: translateX(4px);
+}
+
+/* COLORES POR SISTEMA */
+.zapata       { --color:#ffb900; --claro:#fff0c8; }
+.abarrotes    { --color:#25b94b; --claro:#dff9e5; }
+.allende1     { --color:#1688ed; --claro:#dceeff; }
+.allende2     { --color:#ef3340; --claro:#ffe1e4; }
+.saul         { --color:#93603c; --claro:#f0e2d6; }
+.central      { --color:#7939dc; --claro:#ece1ff; }
+.liquidos     { --color:#06a9e8; --claro:#d9f5ff; }
+.montemorelos { --color:#ed3e91; --claro:#ffe0ef; }
+.ruta1        { --color:#0bb85b; --claro:#dcf9e7; }
+.ruta2        { --color:#ff7917; --claro:#ffeadb; }
+.matriz       { --color:#174a91; --claro:#dce9ff; }
+.osito        { --color:#f5b400; --claro:#fff1c8; }
+.provileon    { --color:#a51443; --claro:#f9dce6; }
+
+/* PIE DE PÁGINA */
+footer {
+    background: linear-gradient(115deg, #24496f, #10213e);
+    color: #a9c5e5;
+    text-align: center;
+    padding: 25px 15px;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .boton {
+        min-height: 125px;
+    }
+
+    .nombre {
+        font-size: clamp(14px, 2vw, 19px);
+    }
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+    header {
+        min-height: 100px;
+        padding: 20px 12px;
+        gap: 12px;
+    }
+
+    .logo-principal {
+        font-size: 43px;
+    }
+
+    .titulo-principal h1 {
+        font-size: 24px;
+    }
+
+    .titulo-principal p {
+        letter-spacing: 1.5px;
+        font-size: 10px;
+    }
+
+    .contenedor {
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .boton {
+        min-height: 105px;
+    }
+
+    .icono {
+        width: 29%;
+        min-width: 85px;
+        font-size: 48px;
+    }
+
+    .nombre {
+        font-size: 18px;
+    }
+
+    .flecha {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+        font-size: 25px;
+    }
+
+    footer {
+        letter-spacing: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boton, .icono span, .flecha {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>INVENTARIOS 2026 PDD</h1>
-    <p>Menú principal de sistemas</p>
+    <div class="logo-principal" aria-hidden="true">📦</div>
+    <div class="titulo-principal">
+        <h1>INVENTARIOS <span>2026</span> PDD</h1>
+        <p>MENÚ PRINCIPAL DE SISTEMAS</p>
+    </div>
 </header>
 
-<div class="contenedor">
-
+<main class="contenedor">
     <div class="grid">
 
-        <a class="boton" href="./PROVSOFT_CONTEO_ZAPATA/index.html">
-            <span class="icono">📋</span>
-            CONTEO ZAPATA
+        <a class="boton zapata" href="./PROVSOFT_CONTEO_ZAPATA/index.html">
+            <div class="icono"><span>📋</span></div>
+            <div class="contenido"><div class="nombre">CONTEO ZAPATA</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_ABARROTES/index.html">
-            <span class="icono">🛒</span>
-            INVENTARIO ABARROTES
+        <a class="boton abarrotes" href="./PROVSOFT_INVENTARIO_ABARROTES/index.html">
+            <div class="icono"><span>🛒</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO ABARROTES</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_ALLENDE1/index.html">
-            <span class="icono">🏪</span>
-            INVENTARIO ALLENDE 1
+        <a class="boton allende1" href="./PROVSOFT_INVENTARIO_ALLENDE1/index.html">
+            <div class="icono"><span>🏬</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO ALLENDE 1</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_ALLENDE2/index.html">
-            <span class="icono">🏪</span>
-            INVENTARIO ALLENDE 2
+        <a class="boton allende2" href="./PROVSOFT_INVENTARIO_ALLENDE2/index.html">
+            <div class="icono"><span>🏪</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO ALLENDE 2</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_ALMACEN_SAUL/index.html">
-            <span class="icono">📦</span>
-            INVENTARIO ALMACÉN SAÚL
+        <a class="boton saul" href="./PROVSOFT_INVENTARIO_ALMACEN_SAUL/index.html">
+            <div class="icono"><span>🏚️</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO ALMACÉN SAÚL</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_CENTRAL/index.html">
-            <span class="icono">🏢</span>
-            INVENTARIO CENTRAL
+        <a class="boton central" href="./PROVSOFT_INVENTARIO_CENTRAL/index.html">
+            <div class="icono"><span>🏢</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO CENTRAL</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_LIQUIDOS/index.html">
-            <span class="icono">💧</span>
-            INVENTARIO LÍQUIDOS
+        <a class="boton liquidos" href="./PROVSOFT_INVENTARIO_LIQUIDOS/index.html">
+            <div class="icono"><span>🧴</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO LÍQUIDOS</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_MONTEMORELOS/index.html">
-            <span class="icono">🏪</span>
-            INVENTARIO MONTEMORELOS
+        <a class="boton montemorelos" href="./PROVSOFT_INVENTARIO_MONTEMORELOS/index.html">
+            <div class="icono"><span>🏪</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO MONTEMORELOS</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_RUTA1/index.html">
-            <span class="icono">🚚</span>
-            INVENTARIO RUTA 1
+        <a class="boton ruta1" href="./PROVSOFT_INVENTARIO_RUTA1/index.html">
+            <div class="icono"><span>🚚</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO RUTA 1</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
-        <a class="boton" href="./PROVSOFT_INVENTARIO_RUTA2/index.html">
-            <span class="icono">🚚</span>
-            INVENTARIO RUTA 2
+        <a class="boton ruta2" href="./PROVSOFT_INVENTARIO_RUTA2/index.html">
+            <div class="icono"><span>🚛</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO RUTA 2</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
+        </a>
+
+        <a class="boton matriz" href="./PROVSOFT_INVENTARIO_MATRIZ_30092026/index.html">
+            <div class="icono"><span>🏙️</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO MATRIZ 30092026</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
+        </a>
+
+        <a class="boton osito" href="./PROVSOFT_INVENTARIO_OSITO_01102026/index.html">
+            <div class="icono"><span>🧸</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO OSITO 01102026</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
+        </a>
+
+        <a class="boton provileon" href="./PROVSOFT_INVENTARIO_PROVILEON_01102026/index.html">
+            <div class="icono"><span>🦁</span></div>
+            <div class="contenido"><div class="nombre">INVENTARIO PROVILEON 01102026</div></div>
+            <div class="flecha" aria-hidden="true">›</div>
         </a>
 
     </div>
-
-</div>
+</main>
 
 <footer>
-    Inventarios 2026 PDD
+    INVENTARIOS 2026 PDD
 </footer>
 
 </body>
